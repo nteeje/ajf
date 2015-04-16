@@ -55,7 +55,7 @@ ajf.controller('memberCtrl', function($scope,$http) {
     $scope.heading = 'AJF Team';
     $scope.message = 'AJF Team Information.';
     //$http.get("http://www.w3schools.com/angular/customers.php")
-    $http.get("http://localhost/ajf/api.php/get_list")
+    $http.get("http://localhost/ajf/api.php/user_list")
 
         .success(function (response) {
            // console.log(response[0]);

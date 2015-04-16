@@ -12,19 +12,24 @@ function redirect($url, $statusCode = 303)
     header('Location: ' . $url, true, $statusCode);
     die();
 }
-function baseUrl(){
-    if(isset($_SERVER['HTTPS'])){
+
+function baseUrl()
+{
+    if (isset($_SERVER['HTTPS'])) {
         $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
-    }
-    else{
+    } else {
         $protocol = 'http';
     }
+
     return $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
-if(function_exists($functionName)){
+
+if (function_exists($functionName)) {
     $functionName();
-}else{
-    //echo 'http://localhost/ajf/api.php/index'.'\n';
-    //var_dump("".baseUrl()."".'index');
-    redirect("".baseUrl()."".'index');
+} else if (isset($urlParams[2])) {
+    redirect("" . baseUrl() . "");
+} else if (!isset($urlParams[3])) {
+    redirect("" . baseUrl() . "/" . 'index');
 }
+
+
