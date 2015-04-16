@@ -7,9 +7,9 @@
  */
 
 // set up the connection variables
-$db_name = 'testdb';
-$hostname = '127.0.0.1';
-$username = 'root';
+$db_name = '';
+$hostname = '';
+$username = '';
 $password = '';
 //global $db;
 
