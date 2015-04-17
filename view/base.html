@@ -1,6 +1,47 @@
-<div class="jumbotron">
-<h3>{{heading}}</h3>
-<p>{{message}}</p>
-<p>PHPRO.ORG is the number one site for PHP and related technologies</p>
-<p><a class="btn btn-lg btn-primary" href="http://phpro.org" role="button">PHPRO.ORG »</a></p>
+<div class="row">
+    <div class="jumbotron">
+        <h3>{{heading}}</h3>
+        <p>{{message}}</p>
+    </div>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered table-responsive table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>F.Name</th>
+                <th>L.Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="customer in customerList">
+                <td>{{customer.cust_id}}</td>
+                <td>{{customer.fname }}</td>
+                <td>{{customer.lname}}</td>
+            </tr>
+            </tbody>
+            </tfoot></tfoot>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="customer in customerList">
+                <td>{{customer.cust_id}}</td>
+                <td>{{customer.fname }}</td>
+                <td>{{customer.lname}}</td>
+            </tr>
+            </tbody>
+            </tfoot></tfoot>
+        </table>
+    </div>
+</div>
+

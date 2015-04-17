@@ -22,3 +22,10 @@ function user_list()
     $json = json_encode($results);
     echo $json;
 }
+
+function customer_list(){
+    global $db;
+    $results = $db->select("customer");
+    $json = json_encode($results);
+    echo $json;
+}

@@ -6,59 +6,66 @@
 var ajf = angular.module('ajf', ['ngRoute']);
 
 // configure our routes
-ajf.config(function($routeProvider) {
+ajf.config(function ($routeProvider) {
 
     $routeProvider
         // route for the index page
         .when('/', {
-            templateUrl : 'view/base.html',
-            controller  : 'mainCtrl'
+            templateUrl: 'view/base.html',
+            controller: 'mainCtrl'
         })
 
         // route for the FAQ page
         .when('/faq', {
-            templateUrl : 'view/faq.html',
-            controller  : 'faqCtrl'
+            templateUrl: 'view/faq.html',
+            controller: 'faqCtrl'
+
         })
 
         // route for the contact page
         .when('/contact', {
-            templateUrl : 'view/contact.html',
-            controller  : 'contactCtrl'
+            templateUrl: 'view/contact.html',
+            controller: 'contactCtrl'
         })
 
         // route for the contact page
         .when('/member', {
-            templateUrl : 'view/member.html',
-            controller  : 'memberCtrl'
+            templateUrl: 'view/member.html',
+            controller: 'memberCtrl'
         });
 });
 
 // create the controller and inject Angular's $scope
-ajf.controller('mainCtrl', function($scope) {
+ajf.controller('mainCtrl', function ($scope,$http) {
     // create a message to display in our view
     $scope.heading = 'Welcome to AJF';
     $scope.message = 'Here you will find the meaning of life.';
+    $http.get("http://localhost/ajf/core_model.php/customer_list")
+
+        .success(function (response) {
+            // console.log(response[0]);
+            $scope.customerList = response;
+        });
 });
 
-ajf.controller('faqCtrl', function($scope) {
+ajf.controller('faqCtrl', function ($scope) {
     $scope.heading = 'AJF FAQ';
     $scope.message = 'This is where you will find the accumulated knowledge of the world.';
 });
 
-ajf.controller('contactCtrl', function($scope) {
+ajf.controller('contactCtrl', function ($scope) {
     $scope.heading = 'Contact AJF.com';
     $scope.message = 'Contact Nalin Tharanga Jayasinghe:';
 });
 
-ajf.controller('memberCtrl', function($scope,$http) {
+ajf.controller('memberCtrl', function ($scope, $http) {
     $scope.heading = 'AJF Team';
     $scope.message = 'AJF Team Information.';
     //$http.get("http://www.w3schools.com/angular/customers.php")
-    $http.get("http://localhost/ajf/api.php/user_list")
+    $http.get("http://localhost/ajf/core_model.php/user_list")
 
         .success(function (response) {
-           // console.log(response[0]);
+            // console.log(response[0]);
             $scope.userList = response;
         });
 });

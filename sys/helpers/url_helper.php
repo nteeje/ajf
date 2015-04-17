@@ -26,9 +26,7 @@ function baseUrl()
 
 if (function_exists($functionName)) {
     $functionName();
-} else if (isset($urlParams[2])) {
-    redirect("" . baseUrl() . "");
-} else if (!isset($urlParams[3])) {
+} else  {
     redirect("" . baseUrl() . "/" . 'index');
 }
 
